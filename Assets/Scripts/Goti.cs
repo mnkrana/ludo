@@ -54,7 +54,27 @@ namespace ludo
                 yield return new WaitForSeconds(0.25f);
             }
 
+            var strike = _currentTile.CheckKill(_player);
+            if(strike.isKilled)
+            {
+                yield return strike.gotiKilled.MoveToSource();
+            }
+
+            yield return new WaitForSeconds(1.0f);
             _ludoManager.ChangeTurn();
+        }
+
+        private IEnumerator MoveToSource()
+        {
+            while(_currentTile != _sourceTile)
+            {            
+                var prevTile =  _currentTile.TileToMove.GetPrevTile();
+                transform.position = prevTile.transform.position;
+                _currentTile.RemoveGoti(this);
+                _currentTile = prevTile;
+                _currentTile.AddGoti(this);
+                yield return new WaitForSeconds(0.125f);
+            }
         }
 
         public void DisableCollider()

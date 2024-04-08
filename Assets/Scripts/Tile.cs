@@ -53,13 +53,29 @@ namespace ludo
                     _goties[index].transform.localScale = new Vector3(0.03f, 0.03f, 1);
                     var gotiPos = _goties[index].transform.position;
                     gotiPos.x = transform.position.x + ((index % 2 == 0) ? -1 : 1) * 0.1f;
-                    if(_goties.Count > 2)
+                    if (_goties.Count > 2)
                     {
                         gotiPos.y = transform.position.y + ((index < 2) ? -1 : 1) * 0.1f;
                     }
                     _goties[index].transform.position = gotiPos;
                 }
             }
+        }
+
+        public (bool isKilled, Goti gotiKilled) CheckKill(Player strikingPlayer)
+        {
+            if (_goties.Count < 2 || isSafeTile) return (false, null);
+            if (_goties.Count == 2)
+            {
+                foreach(var goti in _goties)
+                {
+                    if(goti.Player != strikingPlayer)
+                    {
+                        return (true, goti);
+                    }
+                }
+            }
+            return (false, null);
         }
     }
 }

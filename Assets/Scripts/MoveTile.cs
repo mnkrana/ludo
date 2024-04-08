@@ -7,6 +7,7 @@ namespace ludo
     public class MoveTile
     {
         [SerializeField] private Tile nextTile;
+        [SerializeField] private Tile prevTile;
 
         [SerializeField] private bool isPlayerZone;
 
@@ -20,5 +21,7 @@ namespace ludo
             if(isPlayerZone && player == playerZone) return playerZoneTile;
             return nextTile;
         }
+
+        public Tile GetPrevTile() => prevTile;
     }
 }
