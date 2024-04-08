@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,12 +6,15 @@ namespace ludo
 {
     public class Goti : MonoBehaviour
     {
+        public Player Player => _player;
+
         [SerializeField] private SpriteRenderer spriteRenderer;
 
         private Player _player;
         private Tile _sourceTile;
         private Tile _currentTile;
         private LudoManager _ludoManager;
+        private Vector3 initialScale;
 
         public void SetData(PlayerData player, LudoManager ludoManager)
         {
@@ -22,12 +26,19 @@ namespace ludo
             _currentTile = _sourceTile;
 
             _ludoManager = ludoManager;
+            initialScale = transform.localScale;
+            _currentTile.AddGoti(this);
         }
 
         private void OnMouseDown()
         {
              if(!_ludoManager.IsMyTurn(_player)) return;
              Debug.Log($"Goti clicked {_player}");
+             Move();
+        }
+
+        public void Move()
+        {
              StartCoroutine(MoveTile());
         }
 
@@ -37,11 +48,23 @@ namespace ludo
             {            
                 var nextTile =  _currentTile.TileToMove.GetNextTile(_player);
                 transform.position = nextTile.transform.position;
+                _currentTile.RemoveGoti(this);
                 _currentTile = nextTile;
+                _currentTile.AddGoti(this);
                 yield return new WaitForSeconds(0.25f);
             }
 
             _ludoManager.ChangeTurn();
+        }
+
+        public void DisableCollider()
+        {
+            GetComponent<BoxCollider>().enabled = false;
+        }
+
+        public void ResetScale()
+        {
+            transform.localScale = initialScale;
         }
     }
 }

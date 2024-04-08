@@ -6,7 +6,9 @@ namespace ludo
     public class LudoManager : MonoBehaviour
     {
         public int DiceNumber {get; private set;}
+        public Player MyPlayer => myPlayer;
 
+        [SerializeField] private Player myPlayer;
         [SerializeField] private List<Player> playersPlaying;
 
         private GotiManager _gotiManager;
