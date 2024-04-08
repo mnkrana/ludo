@@ -13,5 +13,12 @@ namespace ludo
         [SerializeField] private Player playerZone;
 
         [SerializeField] private Tile playerZoneTile;
+
+
+        public Tile GetNextTile(Player player)
+        {            
+            if(isPlayerZone && player == playerZone) return playerZoneTile;
+            return nextTile;
+        }
     }
 }
