@@ -12,6 +12,7 @@ namespace ludo
 
         private LudoManager _ludoManager;
         private List<Goti> _goties;
+        private List<GameData> _data;
 
         private void Awake()
         {
@@ -21,13 +22,17 @@ namespace ludo
         public void CreateGoties()
         {
             _goties = new List<Goti>();
+            _data =  new List<GameData>();
 
             foreach (var player in players)
             {
+                var data = new GameData(player.Player, player.ScoreText);
+                _data.Add(data);
+
                 for (var count = config.NumberOfGoti; count > 0; --count)
                 {
                     var goti = Instantiate(gotiPrefab).GetComponent<Goti>();
-                    goti.SetData(player, _ludoManager, this);
+                    goti.SetData(player, data, _ludoManager, this);
                     if (player.Player != _ludoManager.MyPlayer)
                     {
                         goti.DisableCollider();

@@ -16,9 +16,14 @@ namespace ludo
         private Tile _currentTile;
         private LudoManager _ludoManager;
         private GotiManager _gotiManager;
+        private GameData _gameData;
         private Vector3 initialScale;
 
-        public void SetData(PlayerData player, LudoManager ludoManager, GotiManager gotiManager)
+        public void SetData(
+            PlayerData player,
+            GameData gameData,
+            LudoManager ludoManager,
+            GotiManager gotiManager)
         {
             spriteRenderer.color = player.Color;
             _sourceTile = player.SourceTile;
@@ -29,6 +34,7 @@ namespace ludo
 
             _ludoManager = ludoManager;
             _gotiManager = gotiManager;
+            _gameData = gameData;
 
             initialScale = transform.localScale;
             _currentTile.AddGoti(this);
@@ -66,6 +72,7 @@ namespace ludo
                 _currentTile.RemoveGoti(this);
                 _currentTile = nextTile;
                 _currentTile.AddGoti(this);
+                _gameData.AddScore(config.MovePoints);
                 yield return new WaitForSeconds(config.DelayToMove);
             }
 
@@ -77,7 +84,13 @@ namespace ludo
             var strike = _currentTile.CheckKill(_player);
             if (strike.isKilled)
             {
+                _gameData.AddScore(config.KillPoints);
                 yield return strike.gotiKilled.MoveToSource();
+            }
+
+            if(_currentTile.LastTile)
+            {
+                _gameData.AddScore(config.GoalPoints);
             }
 
             yield return new WaitForSeconds(config.DelayToChangeTurn);
@@ -93,6 +106,7 @@ namespace ludo
                 _currentTile.RemoveGoti(this);
                 _currentTile = prevTile;
                 _currentTile.AddGoti(this);
+                _gameData.DecreaseScore(config.MovePoints);
                 yield return new WaitForSeconds(config.DelayToKill);
             }
         }

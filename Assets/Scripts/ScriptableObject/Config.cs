@@ -6,8 +6,8 @@ namespace ludo
     public class Config : ScriptableObject
     {
         [Header("Tile")]
-        public Vector3 gotiScaleOnTile;
-        public float gotiOffsetOnTile;
+        public Vector3 GotiScaleOnTile;
+        public float GotiOffsetOnTile;
 
         [Header("Goti")]
         public float DelayToMove;
@@ -17,5 +17,10 @@ namespace ludo
         [Header("Game")]
         public float TimeScale;
         public int NumberOfGoti;
+
+        [Header("Score")]
+        public int MovePoints;
+        public int KillPoints;
+        public int GoalPoints;
     }
 }

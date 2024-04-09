@@ -51,12 +51,12 @@ namespace ludo
             {
                 for (var index = 0; index < _goties.Count; ++index)
                 {
-                    _goties[index].transform.localScale = config.gotiScaleOnTile;
+                    _goties[index].transform.localScale = config.GotiScaleOnTile;
                     var gotiPos = _goties[index].transform.position;
-                    gotiPos.x = transform.position.x + ((index % 2 == 0) ? -1 : 1) * config.gotiOffsetOnTile;
+                    gotiPos.x = transform.position.x + ((index % 2 == 0) ? -1 : 1) * config.GotiOffsetOnTile;
                     if (_goties.Count > 2)
                     {
-                        gotiPos.y = transform.position.y + ((index < 2) ? -1 : 1) * config.gotiOffsetOnTile;
+                        gotiPos.y = transform.position.y + ((index < 2) ? -1 : 1) * config.GotiOffsetOnTile;
                     }
                     _goties[index].transform.position = gotiPos;
                 }
@@ -83,6 +83,6 @@ namespace ludo
         {
             if(_goties.Count == config.NumberOfGoti && isLastTile) return true;
             return false;
-        }
+        }        
     }
 }

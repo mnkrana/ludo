@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa702c802a694f9ea72ccbc0e3cac31, type: 3}
   m_Name: Config
   m_EditorClassIdentifier: 
-  gotiScaleOnTile: {x: 0.03, y: 0.03, z: 1}
-  gotiOffsetOnTile: 0.1
+  GotiScaleOnTile: {x: 0.03, y: 0.03, z: 1}
+  GotiOffsetOnTile: 0.1
   DelayToMove: 0.25
   DelayToKill: 0.1
   DelayToChangeTurn: 0.5
-  TimeScale: 4
-  NumberOfGoti: 2
+  TimeScale: 2
+  NumberOfGoti: 1
+  MovePoints: 1
+  KillPoints: 10
+  GoalPoints: 100
