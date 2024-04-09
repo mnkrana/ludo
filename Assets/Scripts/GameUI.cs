@@ -30,8 +30,7 @@ namespace ludo
         }
 
         private void OnTurnChange(Player playerTurn)
-        {
-            Debug.Log($"Turn Changed to player {playerTurn}");
+        {            
             turnStatusText.text = $"{playerTurn}";
             diceNumberText.text = "";
             if(playerTurn == _player)

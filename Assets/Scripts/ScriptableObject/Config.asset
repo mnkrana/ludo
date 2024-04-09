@@ -18,3 +18,4 @@ MonoBehaviour:
   DelayToKill: 0.1
   DelayToChangeTurn: 0.5
   TimeScale: 4
+  NumberOfGoti: 2

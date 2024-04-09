@@ -6,6 +6,7 @@ namespace ludo
 {
     public class GotiManager : MonoBehaviour
     {
+        [SerializeField] private Config config;
         [SerializeField] private GameObject gotiPrefab;
         [SerializeField] private List<PlayerData> players;
 
@@ -23,7 +24,7 @@ namespace ludo
 
             foreach (var player in players)
             {
-                for (var count = 4; count > 0; --count)
+                for (var count = config.NumberOfGoti; count > 0; --count)
                 {
                     var goti = Instantiate(gotiPrefab).GetComponent<Goti>();
                     goti.SetData(player, _ludoManager, this);

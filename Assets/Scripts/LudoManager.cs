@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ namespace ludo
         private GotiManager _gotiManager;
         private Player _currentPlayer;   
         private int _currentPlayerIndex = 0;     
+        private bool _isGameOver;
         
         private void Awake()
         {
@@ -30,18 +32,18 @@ namespace ludo
             LudoEvents.OnTurnChange?.Invoke(_currentPlayer);            
         }
 
-        public void SetDice(int diceNumber) 
-        {
-            DiceNumber = diceNumber;
-        }
+        public void SetDice(int diceNumber) => DiceNumber = diceNumber;
 
-        public bool IsMyTurn(Player player)
-        {
-            return player == _currentPlayer;
-        }
+        public bool IsMyTurn(Player player) => player == _currentPlayer;
 
         public void ChangeTurn()
         {
+            if(_isGameOver)
+            {
+                Debug.Log("Can't change turn anymore - Game is already over!");
+                return;
+            }
+
             ++_currentPlayerIndex;            
             if(_currentPlayerIndex == playersPlaying.Count)
             {
@@ -50,5 +52,7 @@ namespace ludo
              _currentPlayer = playersPlaying[_currentPlayerIndex];
             LudoEvents.OnTurnChange?.Invoke(_currentPlayer);     
         }
+
+        public void SetGameOver() => _isGameOver = true;
     }
 }

@@ -6,6 +6,7 @@ namespace ludo
 {
     public class AI : MonoBehaviour
     {
+        [SerializeField] private Config config;
         [SerializeField] private Player player;
         [SerializeField] private Text diceNumberText;
 
@@ -56,7 +57,7 @@ namespace ludo
 
         private bool MoveGoti()
         {
-            if(_tries.Count == 4) return false;
+            if(_tries.Count == config.NumberOfGoti) return false;
 
             if(_goties == null || _goties.Count == 0)
             {

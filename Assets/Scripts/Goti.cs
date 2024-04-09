@@ -69,6 +69,11 @@ namespace ludo
                 yield return new WaitForSeconds(config.DelayToMove);
             }
 
+            if(_currentTile.CheckGameOver())
+            {
+                _ludoManager.SetGameOver();
+            }
+
             var strike = _currentTile.CheckKill(_player);
             if (strike.isKilled)
             {

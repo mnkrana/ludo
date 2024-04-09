@@ -404,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f0179b8e1ee45738536f89f5211914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   gotiPrefab: {fileID: 4016641399190999128, guid: ed392ce25f61f4a55832c239cd8306a8, type: 3}
   players:
   - player: 3
@@ -483,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 4
   diceNumberText: {fileID: 1214910649}
 --- !u!114 &98330263
@@ -497,6 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 3
   diceNumberText: {fileID: 1214910649}
 --- !u!114 &98330264
@@ -511,6 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 2
   diceNumberText: {fileID: 1214910649}
 --- !u!114 &98330265
@@ -525,6 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 1
   diceNumberText: {fileID: 1214910649}
 --- !u!1 &100816346
@@ -5543,6 +5548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f0179b8e1ee45738536f89f5211914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   gotiPrefab: {fileID: 4016641399190999128, guid: ed392ce25f61f4a55832c239cd8306a8, type: 3}
   players:
   - player: 3
@@ -5582,6 +5588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 1
   diceNumberText: {fileID: 1214910649}
 --- !u!114 &1456471365
@@ -5596,6 +5603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 3
   diceNumberText: {fileID: 1214910649}
 --- !u!1001 &1456907004

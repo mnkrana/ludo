@@ -78,5 +78,11 @@ namespace ludo
             }
             return (false, null);
         }
+
+        public bool CheckGameOver()
+        {
+            if(_goties.Count == config.NumberOfGoti && isLastTile) return true;
+            return false;
+        }
     }
 }
