@@ -12,6 +12,7 @@ namespace ludo
         private LudoManager _ludoManager;
         private GotiManager _gotiManager;
         private List<Goti> _goties;
+        private List<int> _tries;
 
         private void Awake()
         {
@@ -30,8 +31,7 @@ namespace ludo
         }
 
         private void OnTurnChange(Player playerTurn)
-        {            
-            diceNumberText.text = "";
+        {                        
             if(playerTurn == player)
             {
                 RollDice();
@@ -44,18 +44,39 @@ namespace ludo
             diceNumberText.text = $"{diceNumber}";
             _ludoManager.SetDice(diceNumber);
 
-            MoveGoti();
+            if(_tries == null) _tries = new List<int>();
+            _tries.Clear();
+
+            var hasMoved = MoveGoti();
+            if(!hasMoved)
+            {
+                _ludoManager.ChangeTurn();
+            }
         }
 
-        private void MoveGoti()
+        private bool MoveGoti()
         {
+            if(_tries.Count == 4) return false;
+
             if(_goties == null || _goties.Count == 0)
             {
                 _goties = _gotiManager.FindGotiesByPlayer(player);
             }
 
-            var randomGoti = Random.Range(0, _goties.Count);
-            _goties[randomGoti].Move();
+            var random = Random.Range(0, _goties.Count);
+
+            while(_tries.Contains(random))
+            {
+                random = Random.Range(0, _goties.Count);
+            }
+
+            _tries.Add(random);
+            var hasMove = _goties[random].Move();
+            if(!hasMove)
+            {
+                return MoveGoti();
+            }
+            return hasMove;
         }
     }
 }

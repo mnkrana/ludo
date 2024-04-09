@@ -8,6 +8,7 @@ namespace ludo
         public int DiceNumber {get; private set;}
         public Player MyPlayer => myPlayer;
 
+        [SerializeField] private Config config;
         [SerializeField] private Player myPlayer;
         [SerializeField] private List<Player> playersPlaying;
 
@@ -17,6 +18,7 @@ namespace ludo
         
         private void Awake()
         {
+            Time.timeScale = config.TimeScale;
             _gotiManager = GetComponent<GotiManager>();
         }
 

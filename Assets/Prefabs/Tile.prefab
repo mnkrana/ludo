@@ -46,7 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb099e210d61472fb211f5fce5fbdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   isSafeTile: 0
+  isLastTile: 0
+  nextTile:
+    nextTile: {fileID: 0}
+    prevTile: {fileID: 0}
+    isPlayerZone: 0
+    playerZone: 0
+    playerZoneTile: {fileID: 0}
 --- !u!1 &7655784372284833818
 GameObject:
   m_ObjectHideFlags: 0

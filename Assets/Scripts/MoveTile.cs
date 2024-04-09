@@ -6,6 +6,7 @@ namespace ludo
     [Serializable]
     public class MoveTile
     {
+        public bool IsPlayerZone => isPlayerZone;
         [SerializeField] private Tile nextTile;
         [SerializeField] private Tile prevTile;
 

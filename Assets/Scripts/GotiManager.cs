@@ -26,7 +26,7 @@ namespace ludo
                 for (var count = 4; count > 0; --count)
                 {
                     var goti = Instantiate(gotiPrefab).GetComponent<Goti>();
-                    goti.SetData(player, _ludoManager);
+                    goti.SetData(player, _ludoManager, this);
                     if (player.Player != _ludoManager.MyPlayer)
                     {
                         goti.DisableCollider();
@@ -39,6 +39,24 @@ namespace ludo
         public List<Goti> FindGotiesByPlayer(Player player)
         {
             return _goties.Where( g => g.Player == player).ToList();
+        }
+
+        public bool CanGotiMove(int diceNumber, Tile sourceTile, Player player)
+        {
+            if(!sourceTile.TileToMove.IsPlayerZone) return true;
+
+            var nextTile = sourceTile.TileToMove.GetNextTile(player);
+            if(nextTile != null)
+            {
+                --diceNumber;
+                if(diceNumber == 0) return true;
+                return CanGotiMove(diceNumber, nextTile, player);
+            }
+            else
+            {
+                Debug.LogError("Can't move!");
+                return false;
+            }
         }
     }
 }

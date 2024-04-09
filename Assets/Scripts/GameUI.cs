@@ -7,6 +7,7 @@ namespace ludo
     {
         [SerializeField] private Button rollButton;
         [SerializeField] private Text diceNumberText;
+        [SerializeField] private Text turnStatusText;
         private Player _player;
 
         private LudoManager _ludoManager;
@@ -31,6 +32,7 @@ namespace ludo
         private void OnTurnChange(Player playerTurn)
         {
             Debug.Log($"Turn Changed to player {playerTurn}");
+            turnStatusText.text = $"{playerTurn}";
             diceNumberText.text = "";
             if(playerTurn == _player)
             {

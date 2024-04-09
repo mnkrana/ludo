@@ -9,6 +9,7 @@ namespace ludo
         public bool LastTile => isLastTile;
         public MoveTile TileToMove => nextTile;
 
+        [SerializeField] private Config config;
         [SerializeField] private bool isSafeTile;
 
         [SerializeField] private bool isLastTile;
@@ -50,12 +51,12 @@ namespace ludo
             {
                 for (var index = 0; index < _goties.Count; ++index)
                 {
-                    _goties[index].transform.localScale = new Vector3(0.03f, 0.03f, 1);
+                    _goties[index].transform.localScale = config.gotiScaleOnTile;
                     var gotiPos = _goties[index].transform.position;
-                    gotiPos.x = transform.position.x + ((index % 2 == 0) ? -1 : 1) * 0.1f;
+                    gotiPos.x = transform.position.x + ((index % 2 == 0) ? -1 : 1) * config.gotiOffsetOnTile;
                     if (_goties.Count > 2)
                     {
-                        gotiPos.y = transform.position.y + ((index < 2) ? -1 : 1) * 0.1f;
+                        gotiPos.y = transform.position.y + ((index < 2) ? -1 : 1) * config.gotiOffsetOnTile;
                     }
                     _goties[index].transform.position = gotiPos;
                 }
