@@ -5,6 +5,7 @@ using Ludo.Data;
 using Ludo.Events;
 using Ludo.Managers;
 using Ludo.ScriptableObjects;
+using Ludo.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +15,23 @@ namespace Ludo.Auto
     {
         [SerializeField] private Config config;
         [SerializeField] private Player player;
-        [SerializeField] private Text diceNumberText;
 
         private LudoManager _ludoManager;
         private GotiManager _gotiManager;
+        private PlayerUI _playerUI;
         private List<Goti> _goties;
         private List<int> _tries;
 
         private void Awake()
         {
-            _ludoManager = GetComponent<LudoManager>();
-            _gotiManager = GetComponent<GotiManager>();
+            _ludoManager = FindObjectOfType<LudoManager>();
+            _gotiManager = FindObjectOfType<GotiManager>();
+            _playerUI = GetComponent<PlayerUI>();
+
+            if(_ludoManager.MyPlayer == player)
+            {
+                enabled = false;
+            }
         }
 
         private void OnEnable() => LudoEvents.OnTurnChange += OnTurnChange;
@@ -41,10 +48,11 @@ namespace Ludo.Auto
 
         private IEnumerator RollDice()
         {
+            yield return new WaitForSeconds(config.DelayToRoll);
             var diceNumber = Random.Range(config.MinDiceNumber,
              config.MaxDiceNumber);
-            diceNumberText.text = $"{diceNumber}";
             _ludoManager.SetDice(diceNumber);
+            _playerUI.DiceNumberImage.sprite = config.DiceNumbers[diceNumber - 1];
 
             if (_tries == null) _tries = new List<int>();
             _tries.Clear();

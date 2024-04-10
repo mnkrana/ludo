@@ -17,10 +17,19 @@ MonoBehaviour:
   DelayToMove: 0.25
   DelayToKill: 0.1
   DelayToChangeTurn: 0.5
-  TimeScale: 3
+  DelayToRoll: 0.5
+  TimeScale: 1
   NumberOfGoti: 2
   MinDiceNumber: 1
   MaxDiceNumber: 7
   MovePoints: 1
   KillPoints: 10
   GoalPoints: 100
+  DiceNumbers:
+  - {fileID: 21300000, guid: e97f9aa4c6e144e93931d02cb6b954d0, type: 3}
+  - {fileID: 21300000, guid: 8114126daa7184b93af6d8082a2f78b6, type: 3}
+  - {fileID: 21300000, guid: bff3ee34c51c4421a9382374211c2659, type: 3}
+  - {fileID: 21300000, guid: 7bfc1384b57ee433f85e34b796f6ee1a, type: 3}
+  - {fileID: 21300000, guid: 5c1ef51ec930a4aafabf331dd3989752, type: 3}
+  - {fileID: 21300000, guid: 0d93c4fb819084b2db9edbc13a96ffcb, type: 3}
+  DiceDefault: {fileID: 21300000, guid: b1d55b3a46bd94e748fbc9ec6d9e3427, type: 3}

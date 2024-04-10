@@ -10,24 +10,27 @@ using UnityEngine.UI;
 
 namespace Ludo.UI
 {
-    public class GameUI : MonoBehaviour
+    public class PlayerUI : MonoBehaviour
     {
         [SerializeField] private Config config;
         [SerializeField] private Button rollButton;
-        [SerializeField] private Text diceNumberText;
-        [SerializeField] private Text turnStatusText;
+        [SerializeField] private Image turnStatusImage;
+        [SerializeField] private Player player;
         
-        private Player _player;
+        public Image DiceNumberImage  => _diceNumberImage;
+
+        private Image _diceNumberImage;
         private LudoManager _ludoManager;
         private GotiManager _gotiManager;
         private List<Goti> _goties;
+        
 
         private void Awake()
         {
-            _ludoManager = GetComponent<LudoManager>();
-            _gotiManager = GetComponent<GotiManager>();
-
-            _player = _ludoManager.MyPlayer;
+            _ludoManager = FindObjectOfType<LudoManager>();
+            _gotiManager = FindObjectOfType<GotiManager>();
+            _diceNumberImage = rollButton.GetComponent<Image>();
+            
             rollButton.onClick.AddListener(RollDice);
         }
 
@@ -37,34 +40,36 @@ namespace Ludo.UI
 
         private void OnTurnChange(Player playerTurn)
         {            
-            turnStatusText.text = $"{playerTurn}";
-            diceNumberText.text = "";
-            if(playerTurn == _player)
+            if(playerTurn == player)
             {
+                turnStatusImage.enabled = true;
+                _diceNumberImage.sprite = config.DiceDefault;
                 rollButton.gameObject.SetActive(true);
+                rollButton.interactable = true;
             }
             else
             {
+                turnStatusImage.enabled = false;
                 rollButton.gameObject.SetActive(false);
             }
         }
 
         public void RollDice()
         {
-            if (!_ludoManager.IsMyTurn(_player)) return;
+            if (!_ludoManager.IsMyTurn(player)) return;
 
-            var diceNumber = Random.Range(config.MinDiceNumber, config.MaxDiceNumber);
-            diceNumberText.text = $"{diceNumber}";
+            var diceNumber = Random.Range(config.MinDiceNumber, config.MaxDiceNumber);            
             _ludoManager.SetDice(diceNumber);
-            rollButton.gameObject.SetActive(false);
+            _diceNumberImage.sprite = config.DiceNumbers[diceNumber - 1];
+            rollButton.interactable = false;
             StartCoroutine(CanAnyGotiMove(diceNumber));
         }
 
-        private IEnumerator CanAnyGotiMove(int diceNumber)
+         private IEnumerator CanAnyGotiMove(int diceNumber)
         {
             if (_goties == null || _goties.Count == 0)
             {
-                _goties = _gotiManager.FindGotiesByPlayer(_player);
+                _goties = _gotiManager.FindGotiesByPlayer(player);
             }
 
             var canMove = false;
@@ -73,7 +78,7 @@ namespace Ludo.UI
                 canMove = _gotiManager.CanGotiMove(
                     diceNumber,
                     goti.CurrentTile,
-                    _player);
+                    player);
                     
                 if (canMove) break;
             }

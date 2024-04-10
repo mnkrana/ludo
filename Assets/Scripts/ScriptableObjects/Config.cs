@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Ludo.ScriptableObjects
@@ -12,9 +13,10 @@ namespace Ludo.ScriptableObjects
         [Header("Goti")]
         public float DelayToMove;
         public float DelayToKill;
-        public float DelayToChangeTurn;
 
         [Header("Game")]
+        public float DelayToChangeTurn;
+        public float DelayToRoll;
         public float TimeScale;
         public int NumberOfGoti;
         public int MinDiceNumber;
@@ -24,5 +26,9 @@ namespace Ludo.ScriptableObjects
         public int MovePoints;
         public int KillPoints;
         public int GoalPoints;
+
+        [Header("Sprites")]
+        public List<Sprite> DiceNumbers;
+        public Sprite DiceDefault;
     }
 }
