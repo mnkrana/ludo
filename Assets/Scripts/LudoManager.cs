@@ -16,6 +16,7 @@ namespace ludo
         private GotiManager _gotiManager;
         private Player _currentPlayer;   
         private int _currentPlayerIndex = 0;     
+        private int _multipleSixes = 0;
         private bool _isGameOver;
         
         private void Awake()
@@ -32,17 +33,39 @@ namespace ludo
             LudoEvents.OnTurnChange?.Invoke(_currentPlayer);            
         }
 
-        public void SetDice(int diceNumber) => DiceNumber = diceNumber;
+        public void SetDice(int diceNumber) 
+        {
+            DiceNumber = diceNumber;
+            if(DiceNumber == 6)
+            {
+                ++_multipleSixes;
+            }
+        } 
 
         public bool IsMyTurn(Player player) => player == _currentPlayer;
 
-        public void ChangeTurn()
+        public void ChangeTurn(bool multipleTurn = false)
         {
             if(_isGameOver)
             {
                 Debug.Log("Can't change turn anymore - Game is already over!");
                 return;
             }
+
+            if(multipleTurn)
+            {
+                LudoEvents.OnTurnChange?.Invoke(_currentPlayer);
+                return;
+            }
+
+            if(DiceNumber == 6 && _multipleSixes < 2)
+            {
+                LudoEvents.OnTurnChange?.Invoke(_currentPlayer);
+                return;
+            }
+
+            DiceNumber = 0;
+            _multipleSixes = 0;
 
             ++_currentPlayerIndex;            
             if(_currentPlayerIndex == playersPlaying.Count)

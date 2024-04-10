@@ -59,8 +59,7 @@ namespace ludo
                 return CanGotiMove(diceNumber, nextTile, player);
             }
             else
-            {
-                Debug.LogError("Can't move!");
+            {                
                 return false;
             }
         }

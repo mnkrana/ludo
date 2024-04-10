@@ -7,6 +7,7 @@ namespace ludo
     public class Goti : MonoBehaviour
     {
         public Player Player => _player;
+        public Tile CurrentTile => _currentTile;
 
         [SerializeField] private Config config;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -42,11 +43,10 @@ namespace ludo
 
         private void OnMouseDown()
         {
-            if (!_ludoManager.IsMyTurn(_player)) return;
-            Debug.Log($"Goti clicked {_player}");
+            if (!_ludoManager.IsMyTurn(_player)) return;            
             if(!Move())
             {
-                Debug.LogError("Please select another Goti!");
+                Debug.Log("Please select another Goti!");
             }
         }
 
@@ -54,7 +54,7 @@ namespace ludo
         {
             if (_gotiManager.CanGotiMove(_ludoManager.DiceNumber, _currentTile, _player))
             {
-                StartCoroutine(MoveTile());
+                StartCoroutine(MoveGoti());
                 return true;
             }
             else
@@ -63,7 +63,7 @@ namespace ludo
             }
         }
 
-        private IEnumerator MoveTile()
+        private IEnumerator MoveGoti()
         {
             for (var diceNumber = _ludoManager.DiceNumber; diceNumber > 0; --diceNumber)
             {
@@ -93,8 +93,9 @@ namespace ludo
                 _gameData.AddScore(config.GoalPoints);
             }
 
+            var multipleTurn = strike.isKilled || _currentTile.LastTile;
             yield return new WaitForSeconds(config.DelayToChangeTurn);
-            _ludoManager.ChangeTurn();
+            _ludoManager.ChangeTurn(multipleTurn);
         }
 
         private IEnumerator MoveToSource()

@@ -17,6 +17,8 @@ namespace ludo
         [Header("Game")]
         public float TimeScale;
         public int NumberOfGoti;
+        public int MinDiceNumber;
+        public int MaxDiceNumber;
 
         [Header("Score")]
         public int MovePoints;

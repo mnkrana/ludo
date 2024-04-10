@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,52 +29,53 @@ namespace ludo
 
         private void OnDisable()
         {
-            LudoEvents.OnTurnChange -= OnTurnChange;            
+            LudoEvents.OnTurnChange -= OnTurnChange;
         }
 
         private void OnTurnChange(Player playerTurn)
-        {                        
-            if(playerTurn == player)
+        {
+            if (playerTurn == player)
             {
-                RollDice();
+                StartCoroutine(RollDice());
             }
         }
 
-        private void RollDice()
-        {                        
-            var diceNumber = Random.Range(1,7);
+        private IEnumerator RollDice()
+        {
+            var diceNumber = Random.Range(config.MinDiceNumber, config.MaxDiceNumber);
             diceNumberText.text = $"{diceNumber}";
             _ludoManager.SetDice(diceNumber);
 
-            if(_tries == null) _tries = new List<int>();
+            if (_tries == null) _tries = new List<int>();
             _tries.Clear();
 
             var hasMoved = MoveGoti();
-            if(!hasMoved)
+            if (!hasMoved)
             {
+                yield return new WaitForSeconds(config.DelayToChangeTurn);
                 _ludoManager.ChangeTurn();
             }
         }
 
         private bool MoveGoti()
         {
-            if(_tries.Count == config.NumberOfGoti) return false;
+            if (_tries.Count == config.NumberOfGoti) return false;
 
-            if(_goties == null || _goties.Count == 0)
+            if (_goties == null || _goties.Count == 0)
             {
                 _goties = _gotiManager.FindGotiesByPlayer(player);
             }
 
             var random = Random.Range(0, _goties.Count);
 
-            while(_tries.Contains(random))
+            while (_tries.Contains(random))
             {
                 random = Random.Range(0, _goties.Count);
             }
 
             _tries.Add(random);
             var hasMove = _goties[random].Move();
-            if(!hasMove)
+            if (!hasMove)
             {
                 return MoveGoti();
             }

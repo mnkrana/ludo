@@ -558,12 +558,12 @@ GameObject:
   - component: {fileID: 98330263}
   - component: {fileID: 98330262}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Manager-4 Player AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &98330258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,6 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671f5fb3504e1443980b7a1c04fb193a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   rollButton: {fileID: 602882908}
   diceNumberText: {fileID: 1657631764}
   turnStatusText: {fileID: 185652479}
@@ -6189,12 +6190,12 @@ GameObject:
   - component: {fileID: 1456471364}
   - component: {fileID: 1456471365}
   m_Layer: 0
-  m_Name: Manager-2Player
+  m_Name: Manager-2 Player AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1456471360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6222,6 +6223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 671f5fb3504e1443980b7a1c04fb193a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   rollButton: {fileID: 602882908}
   diceNumberText: {fileID: 1657631764}
   turnStatusText: {fileID: 185652479}
@@ -7363,6 +7365,114 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb099e210d61472fb211f5fce5fbdb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1715971672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1715971677}
+  - component: {fileID: 1715971676}
+  - component: {fileID: 1715971675}
+  - component: {fileID: 1715971674}
+  - component: {fileID: 1715971673}
+  m_Layer: 0
+  m_Name: Manager-2 Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1715971673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715971672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e500d9ccc0c474bb271c239df29db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  player: 1
+  diceNumberText: {fileID: 1214910649}
+--- !u!114 &1715971674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715971672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c9d5873aba84a3fa7615aaa6f4b8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  myPlayer: 3
+  playersPlaying: 0300000001000000
+--- !u!114 &1715971675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715971672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671f5fb3504e1443980b7a1c04fb193a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  rollButton: {fileID: 602882908}
+  diceNumberText: {fileID: 1657631764}
+  turnStatusText: {fileID: 185652479}
+--- !u!114 &1715971676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715971672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f0179b8e1ee45738536f89f5211914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  gotiPrefab: {fileID: 4016641399190999128, guid: ed392ce25f61f4a55832c239cd8306a8, type: 3}
+  players:
+  - player: 3
+    color:
+      serializedVersion: 2
+      rgba: 4294948780
+    sourceTile: {fileID: 1896451652}
+    scoreText: {fileID: 168266344}
+  - player: 1
+    color:
+      serializedVersion: 2
+      rgba: 4289506303
+    sourceTile: {fileID: 104352716}
+    scoreText: {fileID: 80357186}
+--- !u!4 &1715971677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715971672}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1717979345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9453,3 +9563,4 @@ SceneRoots:
   - {fileID: 399697243}
   - {fileID: 98330259}
   - {fileID: 1456471363}
+  - {fileID: 1715971677}

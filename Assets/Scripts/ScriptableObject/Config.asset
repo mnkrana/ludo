@@ -17,8 +17,10 @@ MonoBehaviour:
   DelayToMove: 0.25
   DelayToKill: 0.1
   DelayToChangeTurn: 0.5
-  TimeScale: 2
-  NumberOfGoti: 1
+  TimeScale: 3
+  NumberOfGoti: 2
+  MinDiceNumber: 1
+  MaxDiceNumber: 7
   MovePoints: 1
   KillPoints: 10
   GoalPoints: 100
