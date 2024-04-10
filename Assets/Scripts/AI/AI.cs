@@ -15,6 +15,7 @@ namespace Ludo.Auto
     {
         [SerializeField] private Config config;
         [SerializeField] private Player player;
+        [SerializeField] private Dice dice;
 
         private LudoManager _ludoManager;
         private GotiManager _gotiManager;
@@ -28,66 +29,54 @@ namespace Ludo.Auto
             _gotiManager = FindObjectOfType<GotiManager>();
             _playerUI = GetComponent<PlayerUI>();
 
-            if(_ludoManager.MyPlayer == player)
+            if (_ludoManager.MyPlayer == player)
             {
                 enabled = false;
             }
         }
 
-        private void OnEnable() => LudoEvents.OnTurnChange += OnTurnChange;
-
-        private void OnDisable() => LudoEvents.OnTurnChange -= OnTurnChange;
-
-        private void OnTurnChange(Player playerTurn)
+        private void Start()
         {
-            if (playerTurn == player)
-            {
-                StartCoroutine(RollDice());
-            }
-        }
-
-        private IEnumerator RollDice()
-        {
-            yield return new WaitForSeconds(config.DelayToRoll);
-            var diceNumber = Random.Range(config.MinDiceNumber,
-             config.MaxDiceNumber);
-            _ludoManager.SetDice(diceNumber);
-            _playerUI.DiceNumberImage.sprite = config.DiceNumbers[diceNumber - 1];
-
             if (_tries == null) _tries = new List<int>();
-            _tries.Clear();
-
-            var hasMoved = MoveGoti();
-            if (!hasMoved)
-            {
-                yield return new WaitForSeconds(config.DelayToChangeTurn);
-                _ludoManager.ChangeTurn();
-            }
-        }
-
-        private bool MoveGoti()
-        {
-            if (_tries.Count == config.NumberOfGoti) return false;
-
             if (_goties == null || _goties.Count == 0)
             {
                 _goties = _gotiManager.FindGotiesByPlayer(player);
             }
+        }
 
+        private void OnEnable()
+        {
+            LudoEvents.OnTurnChange += OnTurnChange;
+            LudoEvents.OnMove += OnMove;
+        }
+
+        private void OnDisable()
+        {
+            LudoEvents.OnTurnChange -= OnTurnChange;
+            LudoEvents.OnMove -= OnMove;
+        }
+
+        private void OnTurnChange(Player playerTurn)
+        {
+            if (playerTurn != player) return;            
+            dice.RollByAI();      
+        }
+
+        private void OnMove(int diceNumber, Player playerTurn)
+        {
+            if (playerTurn != player) return;            
+            _tries.Clear();            
             var random = Random.Range(0, _goties.Count);
+            var goti = _goties[random];
 
-            while (_tries.Contains(random))
+            while (_tries.Contains(random) || !_gotiManager.CanGotiMove(diceNumber, goti.CurrentTile, player))
             {
                 random = Random.Range(0, _goties.Count);
+                goti = _goties[random];
             }
 
-            _tries.Add(random);
-            var hasMove = _goties[random].Move();
-            if (!hasMove)
-            {
-                return MoveGoti();
-            }
-            return hasMove;
-        }
+            _tries.Add(random);            
+            goti.Move(diceNumber);
+        }       
     }
 }

@@ -46,29 +46,28 @@ namespace Ludo.Core
         private void OnMouseDown()
         {
             if (!_ludoManager.IsMyTurn(_player)) return;            
-            if(!Move())
+            if(!Move(_ludoManager.DiceNumber))
             {
                 Debug.Log("Please select another Goti!");
             }
         }
 
-        public bool Move()
+        public bool Move(int diceNumber)
         {
-            if (_gotiManager.CanGotiMove(_ludoManager.DiceNumber,
-                _currentTile, _player))
+            if (_gotiManager.CanGotiMove(diceNumber,_currentTile, _player))
             {
-                StartCoroutine(MoveGoti());
+                StartCoroutine(MoveGoti(diceNumber));
                 return true;
             }
             else
-            {
+            {                
                 return false;
             }
         }
 
-        private IEnumerator MoveGoti()
-        {
-            for (var diceNumber = _ludoManager.DiceNumber; diceNumber > 0; --diceNumber)
+        private IEnumerator MoveGoti(int number)
+        {                        
+            for (var diceNumber = number; diceNumber > 0; --diceNumber)
             {
                 var nextTile = _currentTile.TileToMove.GetNextTile(_player);
                 transform.position = nextTile.transform.position;

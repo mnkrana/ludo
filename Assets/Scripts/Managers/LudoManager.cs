@@ -15,27 +15,27 @@ namespace Ludo.Managers
         public int DiceNumber {get; private set;}
         public Player MyPlayer => myPlayer;
 
-        private GotiManager _gotiManager;
         private Player _currentPlayer;   
         private int _currentPlayerIndex = 0;     
         private int _multipleSixes = 0;
         private bool _isGameOver;
         
         private void Awake()
-        {
+        {        
             Time.timeScale = config.TimeScale;
-            _gotiManager = GetComponent<GotiManager>();
+            GetComponent<GotiManager>().CreateGoties();
         }
 
         private void Start()
         {
-            _gotiManager.CreateGoties();
-
             _currentPlayer = playersPlaying[_currentPlayerIndex];
             LudoEvents.OnTurnChange?.Invoke(_currentPlayer);            
         }
 
-        public void SetDice(int diceNumber) 
+        private void OnEnable() => LudoEvents.OnRoll += SetDice;
+        private void OnDisable() => LudoEvents.OnRoll -= SetDice;
+
+        private void SetDice(int diceNumber, Player _) 
         {
             DiceNumber = diceNumber;
             if(DiceNumber == 6)

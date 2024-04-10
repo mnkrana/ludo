@@ -12,21 +12,14 @@ namespace Ludo.Core
         [SerializeField] private bool isLastTile;
         [SerializeField] private MoveTile nextTile;
 
-        public string ID { get; private set; }
         public bool LastTile => isLastTile;
         public MoveTile TileToMove => nextTile;
 
         private List<Goti> _goties;
 
-
-        private void Awake()
-        {
-            ID = gameObject.name;
-            _goties = new List<Goti>();
-        }
-
         public void AddGoti(Goti goti)
         {
+            if(_goties == null) _goties = new List<Goti>();
             _goties.Add(goti);
             TransformGoties();
         }

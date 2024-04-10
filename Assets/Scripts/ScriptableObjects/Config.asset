@@ -17,7 +17,7 @@ MonoBehaviour:
   DelayToMove: 0.25
   DelayToKill: 0.1
   DelayToChangeTurn: 0.5
-  DelayToRoll: 0.5
+  DelayToRoll: 1
   TimeScale: 1
   NumberOfGoti: 2
   MinDiceNumber: 1

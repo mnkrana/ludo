@@ -888,6 +888,7 @@ GameObject:
   - component: {fileID: 121820781}
   - component: {fileID: 121820780}
   - component: {fileID: 121820779}
+  - component: {fileID: 121820782}
   m_Layer: 5
   m_Name: RollButton
   m_TagString: Untagged
@@ -996,6 +997,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121820777}
   m_CullTransparentMesh: 1
+--- !u!114 &121820782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121820777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbe27a9113cf4c6e952cb989487f02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  player: 1
 --- !u!1001 &132739863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1089,6 +1104,7 @@ GameObject:
   - component: {fileID: 134509105}
   - component: {fileID: 134509104}
   - component: {fileID: 134509103}
+  - component: {fileID: 134509106}
   m_Layer: 5
   m_Name: RollButton
   m_TagString: Untagged
@@ -1197,6 +1213,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134509101}
   m_CullTransparentMesh: 1
+--- !u!114 &134509106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134509101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbe27a9113cf4c6e952cb989487f02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  player: 4
 --- !u!1 &158143419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,8 +3116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fcb9aaca65c40f5b23e3c7223c0c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
-  rollButton: {fileID: 121820779}
   turnStatusImage: {fileID: 1500294584}
   player: 1
 --- !u!114 &599341493
@@ -3104,6 +3132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 1
+  dice: {fileID: 121820782}
 --- !u!1 &602882906
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3145,7 @@ GameObject:
   - component: {fileID: 602882910}
   - component: {fileID: 602882909}
   - component: {fileID: 602882908}
+  - component: {fileID: 602882911}
   m_Layer: 5
   m_Name: RollButton
   m_TagString: Untagged
@@ -3224,6 +3254,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602882906}
   m_CullTransparentMesh: 1
+--- !u!114 &602882911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602882906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbe27a9113cf4c6e952cb989487f02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  player: 3
 --- !u!1001 &618020975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4752,6 +4796,7 @@ GameObject:
   - component: {fileID: 1123254374}
   - component: {fileID: 1123254373}
   - component: {fileID: 1123254372}
+  - component: {fileID: 1123254375}
   m_Layer: 5
   m_Name: RollButton
   m_TagString: Untagged
@@ -4860,6 +4905,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123254370}
   m_CullTransparentMesh: 1
+--- !u!114 &1123254375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123254370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bbe27a9113cf4c6e952cb989487f02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
+  player: 2
 --- !u!1001 &1139188361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6858,8 +6917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fcb9aaca65c40f5b23e3c7223c0c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
-  rollButton: {fileID: 602882908}
   turnStatusImage: {fileID: 1566856321}
   player: 3
 --- !u!114 &1482966845
@@ -6876,6 +6933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 3
+  dice: {fileID: 602882911}
 --- !u!1 &1488161470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7346,8 +7404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fcb9aaca65c40f5b23e3c7223c0c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
-  rollButton: {fileID: 1123254372}
   turnStatusImage: {fileID: 1775047278}
   player: 2
 --- !u!114 &1566519300
@@ -7364,6 +7420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 2
+  dice: {fileID: 1123254375}
 --- !u!1 &1566856319
 GameObject:
   m_ObjectHideFlags: 0
@@ -8720,8 +8777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fcb9aaca65c40f5b23e3c7223c0c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
-  rollButton: {fileID: 134509103}
   turnStatusImage: {fileID: 14854824}
   player: 4
 --- !u!114 &1856910267
@@ -8738,6 +8793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 1e80701b6668e4a508ddf67ebb310019, type: 2}
   player: 4
+  dice: {fileID: 134509106}
 --- !u!1001 &1857004021
 PrefabInstance:
   m_ObjectHideFlags: 0
