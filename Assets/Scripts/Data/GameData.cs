@@ -1,12 +1,12 @@
 using TMPro;
 
-namespace ludo
+namespace Ludo.Data
 {
     public class GameData
     {
         private int _score;
-        private Player _player;
-        private TextMeshPro _text;
+        private readonly Player _player;
+        private readonly TextMeshPro _text;
 
         public GameData(Player player, TextMeshPro text)
         {
@@ -24,6 +24,15 @@ namespace ludo
         {
             _score -= points;
             _text.text = $"{_score}";
+        }
+
+        public int GetScore(Player player)
+        {   
+            if(player == _player)
+            {
+                return _score;
+            }
+            return -1;
         }
     }
 }

@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ludo.Core;
+using Ludo.Data;
+using Ludo.Events;
+using Ludo.Managers;
+using Ludo.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ludo
+namespace Ludo.UI
 {
     public class GameUI : MonoBehaviour
     {
@@ -11,8 +16,8 @@ namespace ludo
         [SerializeField] private Button rollButton;
         [SerializeField] private Text diceNumberText;
         [SerializeField] private Text turnStatusText;
+        
         private Player _player;
-
         private LudoManager _ludoManager;
         private GotiManager _gotiManager;
         private List<Goti> _goties;
@@ -26,15 +31,9 @@ namespace ludo
             rollButton.onClick.AddListener(RollDice);
         }
 
-        private void OnEnable()
-        {
-            LudoEvents.OnTurnChange += OnTurnChange;
-        }
+        private void OnEnable() => LudoEvents.OnTurnChange += OnTurnChange;
 
-        private void OnDisable()
-        {
-            LudoEvents.OnTurnChange -= OnTurnChange;            
-        }
+        private void OnDisable() => LudoEvents.OnTurnChange -= OnTurnChange;
 
         private void OnTurnChange(Player playerTurn)
         {            
@@ -71,7 +70,11 @@ namespace ludo
             var canMove = false;
             foreach (var goti in _goties)
             {
-                canMove = _gotiManager.CanGotiMove(diceNumber, goti.CurrentTile, _player);
+                canMove = _gotiManager.CanGotiMove(
+                    diceNumber,
+                    goti.CurrentTile,
+                    _player);
+                    
                 if (canMove) break;
             }
 

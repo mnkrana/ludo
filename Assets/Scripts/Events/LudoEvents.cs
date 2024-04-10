@@ -1,6 +1,7 @@
 using System;
+using Ludo.Data;
 
-namespace ludo
+namespace Ludo.Events
 {
     public static class LudoEvents
     {

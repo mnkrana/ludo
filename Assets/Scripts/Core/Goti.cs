@@ -1,16 +1,18 @@
-using System;
 using System.Collections;
+using Ludo.Data;
+using Ludo.Managers;
+using Ludo.ScriptableObjects;
 using UnityEngine;
 
-namespace ludo
+namespace Ludo.Core
 {
     public class Goti : MonoBehaviour
     {
-        public Player Player => _player;
-        public Tile CurrentTile => _currentTile;
-
         [SerializeField] private Config config;
         [SerializeField] private SpriteRenderer spriteRenderer;
+
+        public Player Player => _player;
+        public Tile CurrentTile => _currentTile;
 
         private Player _player;
         private Tile _sourceTile;
@@ -52,7 +54,8 @@ namespace ludo
 
         public bool Move()
         {
-            if (_gotiManager.CanGotiMove(_ludoManager.DiceNumber, _currentTile, _player))
+            if (_gotiManager.CanGotiMove(_ludoManager.DiceNumber,
+                _currentTile, _player))
             {
                 StartCoroutine(MoveGoti());
                 return true;
@@ -112,14 +115,8 @@ namespace ludo
             }
         }
 
-        public void DisableCollider()
-        {
-            GetComponent<BoxCollider>().enabled = false;
-        }
+        public void DisableCollider() => GetComponent<BoxCollider>().enabled = false;
 
-        public void ResetScale()
-        {
-            transform.localScale = initialScale;
-        }
+        public void ResetScale() => transform.localScale = initialScale;
     }
 }

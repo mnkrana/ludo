@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using Ludo.Core;
+using Ludo.Data;
+using Ludo.ScriptableObjects;
 using UnityEngine;
 
-namespace ludo
+namespace Ludo.Managers
 {
     public class GotiManager : MonoBehaviour
     {
@@ -11,8 +14,7 @@ namespace ludo
         [SerializeField] private List<PlayerData> players;
 
         private LudoManager _ludoManager;
-        private List<Goti> _goties;
-        private List<GameData> _data;
+        private List<Goti> _goties;        
 
         private void Awake()
         {
@@ -21,13 +23,11 @@ namespace ludo
 
         public void CreateGoties()
         {
-            _goties = new List<Goti>();
-            _data =  new List<GameData>();
+            _goties = new List<Goti>();            
 
             foreach (var player in players)
             {
-                var data = new GameData(player.Player, player.ScoreText);
-                _data.Add(data);
+                var data = new GameData(player.Player, player.ScoreText);                
 
                 for (var count = config.NumberOfGoti; count > 0; --count)
                 {
@@ -47,7 +47,10 @@ namespace ludo
             return _goties.Where( g => g.Player == player).ToList();
         }
 
-        public bool CanGotiMove(int diceNumber, Tile sourceTile, Player player)
+        public bool CanGotiMove(
+            int diceNumber,
+            Tile sourceTile,
+            Player player)
         {
             if(!sourceTile.TileToMove.IsPlayerZone) return true;
 

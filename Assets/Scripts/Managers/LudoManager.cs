@@ -1,17 +1,19 @@
-using System;
 using System.Collections.Generic;
+using Ludo.Data;
+using Ludo.Events;
+using Ludo.ScriptableObjects;
 using UnityEngine;
 
-namespace ludo
+namespace Ludo.Managers
 {
     public class LudoManager : MonoBehaviour
     {
-        public int DiceNumber {get; private set;}
-        public Player MyPlayer => myPlayer;
-
         [SerializeField] private Config config;
         [SerializeField] private Player myPlayer;
         [SerializeField] private List<Player> playersPlaying;
+
+        public int DiceNumber {get; private set;}
+        public Player MyPlayer => myPlayer;
 
         private GotiManager _gotiManager;
         private Player _currentPlayer;   

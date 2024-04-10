@@ -1,20 +1,20 @@
 using System.Collections.Generic;
+using Ludo.Data;
+using Ludo.ScriptableObjects;
 using UnityEngine;
 
-namespace ludo
+namespace Ludo.Core
 {
     public class Tile : MonoBehaviour
     {
+        [SerializeField] private Config config;
+        [SerializeField] private bool isSafeTile;
+        [SerializeField] private bool isLastTile;
+        [SerializeField] private MoveTile nextTile;
+
         public string ID { get; private set; }
         public bool LastTile => isLastTile;
         public MoveTile TileToMove => nextTile;
-
-        [SerializeField] private Config config;
-        [SerializeField] private bool isSafeTile;
-
-        [SerializeField] private bool isLastTile;
-
-        [SerializeField] private MoveTile nextTile;
 
         private List<Goti> _goties;
 
@@ -51,19 +51,28 @@ namespace ludo
             {
                 for (var index = 0; index < _goties.Count; ++index)
                 {
-                    _goties[index].transform.localScale = config.GotiScaleOnTile;
+                    _goties[index].transform.localScale = 
+                        config.GotiScaleOnTile;
+
                     var gotiPos = _goties[index].transform.position;
-                    gotiPos.x = transform.position.x + ((index % 2 == 0) ? -1 : 1) * config.GotiOffsetOnTile;
+
+                    gotiPos.x = transform.position.x + 
+                        ((index % 2 == 0) ? -1 : 1) * 
+                            config.GotiOffsetOnTile;
+
                     if (_goties.Count > 2)
                     {
-                        gotiPos.y = transform.position.y + ((index < 2) ? -1 : 1) * config.GotiOffsetOnTile;
+                        gotiPos.y = transform.position.y + 
+                            ((index < 2) ? -1 : 1) * 
+                                config.GotiOffsetOnTile;
                     }
                     _goties[index].transform.position = gotiPos;
                 }
             }
         }
 
-        public (bool isKilled, Goti gotiKilled) CheckKill(Player strikingPlayer)
+        public (bool isKilled, Goti gotiKilled) CheckKill(
+            Player strikingPlayer)
         {
             if (_goties.Count < 2 || isSafeTile) return (false, null);
             if (_goties.Count == 2)
@@ -81,7 +90,10 @@ namespace ludo
 
         public bool CheckGameOver()
         {
-            if(_goties.Count == config.NumberOfGoti && isLastTile) return true;
+            if(_goties.Count == config.NumberOfGoti && isLastTile)
+            {
+                return true;
+            }                 
             return false;
         }        
     }

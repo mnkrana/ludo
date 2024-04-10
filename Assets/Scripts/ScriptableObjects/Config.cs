@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ludo
+namespace Ludo.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "ludo/Config")]
     public class Config : ScriptableObject

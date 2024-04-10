@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ludo.Core;
+using Ludo.Data;
+using Ludo.Events;
+using Ludo.Managers;
+using Ludo.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ludo
+namespace Ludo.Auto
 {
     public class AI : MonoBehaviour
     {
@@ -22,15 +27,9 @@ namespace ludo
             _gotiManager = GetComponent<GotiManager>();
         }
 
-        private void OnEnable()
-        {
-            LudoEvents.OnTurnChange += OnTurnChange;
-        }
+        private void OnEnable() => LudoEvents.OnTurnChange += OnTurnChange;
 
-        private void OnDisable()
-        {
-            LudoEvents.OnTurnChange -= OnTurnChange;
-        }
+        private void OnDisable() => LudoEvents.OnTurnChange -= OnTurnChange;
 
         private void OnTurnChange(Player playerTurn)
         {
@@ -42,7 +41,8 @@ namespace ludo
 
         private IEnumerator RollDice()
         {
-            var diceNumber = Random.Range(config.MinDiceNumber, config.MaxDiceNumber);
+            var diceNumber = Random.Range(config.MinDiceNumber,
+             config.MaxDiceNumber);
             diceNumberText.text = $"{diceNumber}";
             _ludoManager.SetDice(diceNumber);
 
