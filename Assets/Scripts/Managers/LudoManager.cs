@@ -13,6 +13,7 @@ namespace Ludo.Managers
         [SerializeField] private List<Player> playersPlaying;
 
         public int DiceNumber {get; private set;}
+        public bool CancleTurnOn3Sixes => _multipleSixes == 3;
         public Player MyPlayer => myPlayer;
 
         private Player _currentPlayer;   
@@ -60,7 +61,7 @@ namespace Ludo.Managers
                 return;
             }
 
-            if(DiceNumber == 6 && _multipleSixes < 2)
+            if(DiceNumber == 6 && _multipleSixes < 3)
             {
                 LudoEvents.OnTurnChange?.Invoke(_currentPlayer);
                 return;

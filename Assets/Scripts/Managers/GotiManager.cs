@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Ludo.Core;
@@ -81,8 +82,15 @@ namespace Ludo.Managers
                 canMove = CanGotiMove(diceNumber, goti.CurrentTile, player);
                 if (canMove) break;
             }
-            if (!canMove)
+            StartCoroutine(CheckTurn(canMove, diceNumber, player));
+        }
+
+        private IEnumerator CheckTurn(bool canMove, int diceNumber, Player player)
+        {
+            yield return null;
+            if (!canMove || _ludoManager.CancleTurnOn3Sixes)
             {
+                yield return new WaitForSeconds(config.DelayToChangeTurn);
                 _ludoManager.ChangeTurn();
             }
             else
