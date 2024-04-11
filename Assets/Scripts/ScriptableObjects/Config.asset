@@ -19,7 +19,7 @@ MonoBehaviour:
   DelayToChangeTurn: 1
   DelayToMoveAI: 1
   DelayBeforeKill: 1
-  DelayToShowDice: 1
+  DelayToShowDice: 0.5
   DelayToRoll: 1
   TimeScale: 1
   NumberOfGoti: 4

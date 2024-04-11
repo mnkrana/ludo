@@ -13,10 +13,12 @@ namespace Ludo.Managers
         [SerializeField] private List<Player> playersPlaying;
 
         public int DiceNumber {get; private set;}
+        public int NumberOfGoti {get; private set;}
         public bool CancleTurnOn3Sixes => _multipleSixes == 3;
         public Player MyPlayer => myPlayer;
 
         private Player _currentPlayer;   
+        private PersistentData _persistentData;
         private int _currentPlayerIndex = 0;     
         private int _multipleSixes = 0;
         private bool _isGameOver;
@@ -24,6 +26,18 @@ namespace Ludo.Managers
         private void Awake()
         {        
             Time.timeScale = config.TimeScale;
+
+            _persistentData = FindObjectOfType<PersistentData>();
+            if(_persistentData != null)
+            {
+                playersPlaying = _persistentData.GetPlayers();
+                NumberOfGoti = _persistentData.NumberOfGoti;
+            }
+            else
+            {
+                NumberOfGoti = config.NumberOfGoti;
+            }
+
             GetComponent<GotiManager>().CreateGoties();
         }
 

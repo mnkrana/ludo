@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Ludo.Data;
+using Ludo.Managers;
 using Ludo.ScriptableObjects;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ namespace Ludo.Core
         public MoveTile TileToMove => nextTile;
 
         private List<Goti> _goties;
+        private LudoManager _ludoManager;
+
+        private void Awake() => _ludoManager = FindObjectOfType<LudoManager>();
 
         public void AddGoti(Goti goti)
         {
@@ -83,7 +87,7 @@ namespace Ludo.Core
 
         public bool CheckGameOver()
         {
-            if(_goties.Count == config.NumberOfGoti && isLastTile)
+            if(_goties.Count == _ludoManager.NumberOfGoti && isLastTile)
             {
                 return true;
             }                 

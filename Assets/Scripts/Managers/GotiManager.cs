@@ -35,7 +35,7 @@ namespace Ludo.Managers
             {
                 var data = new GameData(player.Player, player.ScoreText);
 
-                for (var count = config.NumberOfGoti; count > 0; --count)
+                for (var count = _ludoManager.NumberOfGoti; count > 0; --count)
                 {
                     var goti = Instantiate(gotiPrefab).GetComponent<Goti>();
                     goti.SetData(player, data, _ludoManager, this);
