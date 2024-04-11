@@ -45,7 +45,8 @@ namespace Ludo.Core
 
         private void OnMouseDown()
         {
-            if (!_ludoManager.IsMyTurn(_player)) return;            
+            if (!_ludoManager.IsMyTurn(_player)) return;  
+            AudioManager.Instance.Play(AudioName.GOTI_TAP);          
             if(!Move(_ludoManager.DiceNumber))
             {
                 Debug.Log("Please select another Goti!");
@@ -69,6 +70,7 @@ namespace Ludo.Core
         {                        
             for (var diceNumber = number; diceNumber > 0; --diceNumber)
             {
+                AudioManager.Instance.Play(AudioName.MOVE);
                 var nextTile = _currentTile.TileToMove.GetNextTile(_player);
                 transform.position = nextTile.transform.position;
                 _currentTile.RemoveGoti(this);
@@ -86,12 +88,15 @@ namespace Ludo.Core
             var strike = _currentTile.CheckKill(_player);
             if (strike.isKilled)
             {
+                AudioManager.Instance.Play(AudioName.KILL);
                 _gameData.AddScore(config.KillPoints);
+                yield return new WaitForSeconds(config.DelayBeforeKill);
                 yield return strike.gotiKilled.MoveToSource();
             }
 
             if(_currentTile.LastTile)
             {
+                AudioManager.Instance.Play(AudioName.GOAL);
                 _gameData.AddScore(config.GoalPoints);
             }
 
@@ -104,6 +109,7 @@ namespace Ludo.Core
         {
             while (_currentTile != _sourceTile)
             {
+                AudioManager.Instance.Play(AudioName.MOVE);
                 var prevTile = _currentTile.TileToMove.GetPrevTile();
                 transform.position = prevTile.transform.position;
                 _currentTile.RemoveGoti(this);

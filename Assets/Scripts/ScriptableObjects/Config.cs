@@ -16,6 +16,9 @@ namespace Ludo.ScriptableObjects
 
         [Header("Game")]
         public float DelayToChangeTurn;
+        public float DelayToMoveAI;
+        public float DelayBeforeKill;
+        public float DelayToShowDice;
         public float DelayToRoll;
         public float TimeScale;
         public int NumberOfGoti;

@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9698db031a30e49e2b96b60492b2a099, type: 3}
   m_Name: AudioDB
   m_EditorClassIdentifier: 
-  audios: []
+  audios:
+  - Name: 0
+    Clip: {fileID: 8300000, guid: 964a120d7fc2d4d6dad902792bd7fa33, type: 3}
+    Volume: 0.1
+  - Name: 1
+    Clip: {fileID: 8300000, guid: 90489cf6c45514b72a2e8882a2558981, type: 3}
+    Volume: 0.1
+  - Name: 2
+    Clip: {fileID: 8300000, guid: eff1f5da198f147088d248ab4a7df342, type: 3}
+    Volume: 0.1
+  - Name: 3
+    Clip: {fileID: 8300000, guid: 4dadd88efc2814dcd8b6dfaa742fe703, type: 3}
+    Volume: 0.1
+  - Name: 4
+    Clip: {fileID: 8300000, guid: e09dab04c1137401f8fc9720e5c85110, type: 3}
+    Volume: 0.1
+  - Name: 5
+    Clip: {fileID: 8300000, guid: 845ea359bbe104489af15efc53ce47b5, type: 3}
+    Volume: 0.1
+  - Name: 6
+    Clip: {fileID: 8300000, guid: 8fdff5d7a8ca8469897eb5bfe375247e, type: 3}
+    Volume: 0.1
+  - Name: 7
+    Clip: {fileID: 8300000, guid: 3a1523eabad88485ebd3f7efa9860e63, type: 3}
+    Volume: 0.1

@@ -95,6 +95,7 @@ namespace Ludo.Managers
             }
             else
             {
+                yield return new WaitForSeconds(config.DelayToMoveAI);
                 LudoEvents.OnMove?.Invoke(diceNumber, player);
             }
         }

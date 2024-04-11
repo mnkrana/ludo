@@ -16,10 +16,13 @@ MonoBehaviour:
   GotiOffsetOnTile: 0.1
   DelayToMove: 0.25
   DelayToKill: 0.1
-  DelayToChangeTurn: 0.5
+  DelayToChangeTurn: 1
+  DelayToMoveAI: 1
+  DelayBeforeKill: 1
+  DelayToShowDice: 1
   DelayToRoll: 1
   TimeScale: 1
-  NumberOfGoti: 2
+  NumberOfGoti: 4
   MinDiceNumber: 1
   MaxDiceNumber: 7
   MovePoints: 1

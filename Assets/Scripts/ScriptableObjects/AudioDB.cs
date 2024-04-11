@@ -29,5 +29,10 @@ namespace Ludo.ScriptableObjects
     public class AudioDB : ScriptableObject
     {
         public List<Audio> audios;
+
+        public Audio GetAudio(AudioName audioName)
+        {
+            return audios.Find( x => x.Name == audioName);
+        }
     }
 }

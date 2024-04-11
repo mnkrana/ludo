@@ -76,7 +76,8 @@ namespace Ludo.Managers
                 _currentPlayerIndex = 0;
             }
              _currentPlayer = playersPlaying[_currentPlayerIndex];
-            LudoEvents.OnTurnChange?.Invoke(_currentPlayer);     
+            LudoEvents.OnTurnChange?.Invoke(_currentPlayer);   
+            AudioManager.Instance.Play(AudioName.TURN);  
         }
 
         public void SetGameOver() => _isGameOver = true;
