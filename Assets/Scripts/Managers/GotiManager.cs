@@ -16,6 +16,8 @@ namespace Ludo.Managers
         [SerializeField] private GameObject gotiPrefab;
         [SerializeField] private List<PlayerData> players;
 
+        public List<GameData> GameDataList {get; private set;}
+
         private LudoManager _ludoManager;
         private List<Goti> _goties;
 
@@ -30,11 +32,14 @@ namespace Ludo.Managers
         public void CreateGoties()
         {
             _goties = new List<Goti>();
+            GameDataList = new List<GameData>();
 
-            foreach (var player in players)
+            foreach (var p in _ludoManager.PlayersPlaying)            
             {
+                var player = players.Find(x => x.Player == p);
                 var data = new GameData(player.Player, player.ScoreText);
-
+                GameDataList.Add(data);
+                
                 for (var count = _ludoManager.NumberOfGoti; count > 0; --count)
                 {
                     var goti = Instantiate(gotiPrefab).GetComponent<Goti>();

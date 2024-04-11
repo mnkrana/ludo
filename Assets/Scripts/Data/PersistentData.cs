@@ -6,6 +6,8 @@ public class PersistentData : MonoBehaviour
 {
     private int _numberOfPlayers;
     public int NumberOfGoti { get; private set; }
+    public List<GameData> GameDataList {get; private set;}
+
 
     private void Awake() => DontDestroyOnLoad(this);
 
@@ -14,6 +16,8 @@ public class PersistentData : MonoBehaviour
         _numberOfPlayers = numberOfPlayers;
         NumberOfGoti = numberOfGoti + 1;
     }
+
+    public void SetGameData(List<GameData> gameDatas) => GameDataList = gameDatas;
 
     public List<Player> GetPlayers()
     {

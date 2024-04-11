@@ -20,6 +20,7 @@ namespace Ludo.ScriptableObjects
         public float DelayBeforeKill;
         public float DelayToShowDice;
         public float DelayToRoll;
+        public float DelayBeforeGameOver;
         public float TimeScale;
         public int NumberOfGoti;
         public int MinDiceNumber;

@@ -3,6 +3,7 @@ using Ludo.Data;
 using Ludo.Events;
 using Ludo.ScriptableObjects;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Ludo.Managers
 {
@@ -16,8 +17,10 @@ namespace Ludo.Managers
         public int NumberOfGoti {get; private set;}
         public bool CancleTurnOn3Sixes => _multipleSixes == 3;
         public Player MyPlayer => myPlayer;
+        public List<Player> PlayersPlaying => playersPlaying;
 
         private Player _currentPlayer;   
+        private GotiManager _gotiManager;
         private PersistentData _persistentData;
         private int _currentPlayerIndex = 0;     
         private int _multipleSixes = 0;
@@ -38,7 +41,8 @@ namespace Ludo.Managers
                 NumberOfGoti = config.NumberOfGoti;
             }
 
-            GetComponent<GotiManager>().CreateGoties();
+            _gotiManager = GetComponent<GotiManager>();
+            _gotiManager.CreateGoties();
         }
 
         private void Start()
@@ -94,6 +98,25 @@ namespace Ludo.Managers
             AudioManager.Instance.Play(AudioName.TURN);  
         }
 
-        public void SetGameOver() => _isGameOver = true;
+        public void SetGameOver() 
+        {
+            _isGameOver = true;
+            Invoke(nameof(OnGameOver), config.DelayBeforeGameOver);
+        } 
+
+        private void OnGameOver()
+        {
+            _persistentData.SetGameData(_gotiManager.GameDataList);
+            SceneManager.LoadScene("GameOver");
+        }
+
+        //test
+        void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.G))
+            {
+                SetGameOver();
+            }
+        }
     }
 }

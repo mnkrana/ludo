@@ -3397,6 +3397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnStatusImage: {fileID: 1500294584}
+  playerImage: {fileID: 1488161472}
   player: 1
 --- !u!114 &599341493
 MonoBehaviour:
@@ -7710,6 +7711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnStatusImage: {fileID: 1566856321}
+  playerImage: {fileID: 2084569815}
   player: 3
 --- !u!114 &1482966845
 MonoBehaviour:
@@ -8325,6 +8327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnStatusImage: {fileID: 1775047278}
+  playerImage: {fileID: 2087657695}
   player: 2
 --- !u!114 &1566519300
 MonoBehaviour:
@@ -9954,6 +9957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnStatusImage: {fileID: 14854824}
+  playerImage: {fileID: 1421397348}
   player: 4
 --- !u!114 &1856910267
 MonoBehaviour:

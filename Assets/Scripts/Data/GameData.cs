@@ -4,6 +4,8 @@ namespace Ludo.Data
 {
     public class GameData
     {
+        public Player Player => _player;
+        public int Score => _score;
         private int _score;
         private readonly Player _player;
         private readonly TextMeshPro _text;
@@ -24,15 +26,6 @@ namespace Ludo.Data
         {
             _score -= points;
             _text.text = $"{_score}";
-        }
-
-        public int GetScore(Player player)
-        {   
-            if(player == _player)
-            {
-                return _score;
-            }
-            return -1;
-        }
+        }      
     }
 }
